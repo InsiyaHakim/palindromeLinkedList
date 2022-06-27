@@ -131,14 +131,62 @@ class LinkedList {
         return slow;
     }
 
+
+    MoveLastElementToFrontOfLinkedList(){
+        let secondLastNode = this.head;
+        debugger
+        while(secondLastNode.next.next !== null){
+            secondLastNode = secondLastNode.next;
+        }
+        //removing last node refernces from tail
+        let lastNode = secondLastNode.next;
+        secondLastNode.next = null;
+        lastNode.previous = null;//if you dont have setup for previous pointer than thats fine, it should still work.
+        this.tail = secondLastNode;
+        //making last node as head
+        lastNode.next = this.head;
+        this.head.previous = lastNode;
+        this.head = lastNode;
+        console.log(this);
+        console.log(this.printList());
+    }
+
+    MoveFirstElementToEndOfLinkedList(){
+        let head = this.head;
+        let secondNode = this.head.next;
+        let lastNode = this.head;
+        debugger;
+        while(lastNode.next !== null){
+            lastNode = lastNode.next;
+        }
+        //setting second node to head
+        secondNode.previous = null;
+        head.next = null;
+        this.head = secondNode;
+        //setting head to tail
+        lastNode.next = head;
+        head.previous = lastNode;
+        this.tail = head;
+        this.tail.next = null;
+        console.log(this);
+        console.log(this.printList());
+    }
+
 }
 
-const myLinkedList2 = new LinkedList("a");
-myLinkedList2.append("b");
-myLinkedList2.append("b");
-myLinkedList2.append("a");
+const myLinkedList2 = new LinkedList("1");
+myLinkedList2.append("2");
+myLinkedList2.append("3");
+myLinkedList2.append("4");
+myLinkedList2.MoveLastElementToFrontOfLinkedList();
 
-console.log(myLinkedList2.palindromeLinkedList());
+
+const myLinkedList3 = new LinkedList("1");
+myLinkedList3.append("2");
+myLinkedList3.append("3");
+myLinkedList3.append("4");
+myLinkedList3.MoveFirstElementToEndOfLinkedList()
+//console.log(myLinkedList2.palindromeLinkedList());
 
 
 
