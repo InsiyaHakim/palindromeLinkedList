@@ -134,7 +134,7 @@ class LinkedList {
 
     MoveLastElementToFrontOfLinkedList(){
         let secondLastNode = this.head;
-        debugger
+
         while(secondLastNode.next.next !== null){
             secondLastNode = secondLastNode.next;
         }
@@ -155,7 +155,7 @@ class LinkedList {
         let head = this.head;
         let secondNode = this.head.next;
         let lastNode = this.head;
-        debugger;
+
         while(lastNode.next !== null){
             lastNode = lastNode.next;
         }
@@ -172,9 +172,26 @@ class LinkedList {
         console.log(this.printList());
     }
 
+    palindromeWithDoublyLinkedList(){
+        let head = this.head; //0(1)
+        let tail = this.tail //0(1)
+
+        while(head !== tail){ //0(n) for loop
+            if(head.value !== tail.value) return false; //0(1)
+
+            //this condition will work when we have even number of nodes
+            if(tail === head.next && head === tail.previous) break; //0(1)
+
+            head = head.next; //0(1)
+            tail = tail.previous; //0(1)
+        }
+        return true;
+    }
+    //TC: 0(n)
+    //SC: 0(1)
 }
 
-const myLinkedList2 = new LinkedList("1");
+/*const myLinkedList2 = new LinkedList("1");
 myLinkedList2.append("2");
 myLinkedList2.append("3");
 myLinkedList2.append("4");
@@ -185,7 +202,7 @@ const myLinkedList3 = new LinkedList("1");
 myLinkedList3.append("2");
 myLinkedList3.append("3");
 myLinkedList3.append("4");
-myLinkedList3.MoveFirstElementToEndOfLinkedList()
+myLinkedList3.MoveFirstElementToEndOfLinkedList()*/
 //console.log(myLinkedList2.palindromeLinkedList());
 
 
@@ -194,14 +211,19 @@ myLinkedList3.MoveFirstElementToEndOfLinkedList()
 
 
 
-/*const myLinkedList = new LinkedList(10);
-myLinkedList.append(5);
-myLinkedList.append(6);
-myLinkedList.prepend(3);
-myLinkedList.insert(1,99);
-myLinkedList.remove(2);
+const myLinkedList = new LinkedList("l");
+myLinkedList.append("e");
+myLinkedList.append("v");
+myLinkedList.append("v");
+myLinkedList.append("e");
+//myLinkedList.append("j");
+myLinkedList.append("l");
+//myLinkedList.prepend("e");
+//myLinkedList.insert(1,"l");
+console.log(myLinkedList.palindromeWithDoublyLinkedList());
+//myLinkedList.remove(2);
 //myLinkedList.reverse();
 //console.log(myLinkedList.printList());
-console.log(myLinkedList.reverse());
+//console.log(myLinkedList.reverse());
 //console.log(myLinkedList.printList());
-//console.log(myLinkedList)*/
+//console.log(myLinkedList)
