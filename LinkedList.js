@@ -37,8 +37,8 @@ class LinkedList {
         return this;
     }
 
-    printList(){
-        let currentNode = this.head;
+    printList(node = null){debugger;
+        let currentNode = node || this.head;
         let result = [];
         while(currentNode !== null){
             result.push(currentNode.value);
@@ -83,18 +83,47 @@ class LinkedList {
         //console.log(this.printList());
     }
 
-    reverse(middleNode = null){
-        let current = middleNode ? middleNode : this.head;
-        let pre = null;
 
-        while(current !== null){
-            let temp = current.next;
-            current.next = pre;
-            pre = current;
-            current = temp;
+
+
+    reverseSinglyLinkedList(middleNode = null){
+        let current = middleNode ? middleNode : this.head; //0(1)
+        let prev = null; //0(1)
+
+        while(current !== null){ //0(n) for loop
+            let temp = current.next; //0(1)
+            current.next = prev; //0(1)
+            prev = current; //0(1)
+            current = temp; //0(1)
         }
-        return pre;
+        return prev;
     }
+    //TC: 0(n)
+    //SC: 0(1) we only have one pointer of next
+
+    reverseDoublyLinkedList(){
+        if(!this.head || !this.head.next) return this.head; //0(1)
+
+        let current = this.head; //0(1) current is 1
+        let prev = null; //0(1)
+        //let say out list is something like this 1 <--> 2 <--> 3
+        while (current !== null){ //0(n) for loop
+            //first time we need to save next element in the list (2) as we are going to change next pointer
+            let temp = current.next; //0(1)
+            // first time prev is null and we want to reverse our list so now we will point next to prev
+            current.next = prev; //0(1)
+            //first time current.previous was null so we will make previous to point to (2)
+            current.previous = temp; //0(1)
+            // at this point we have successfully swaped our next and previous pointers.
+            // Now we need to save our current as prev, so that in next iteration we can point 2's next to 1 and 2's previous to 3
+            prev = current; //0(1)
+            //we are moving towards the end of our list with the help of previous node
+            // if you check prev value it will be 2 on first iteration
+            current = current.previous; //0(1)
+        }
+        return prev;
+    }
+    //TC: 0(n) and //SC: 0(2) we have two pointers, next and previous
 
 
     palindromeLinkedList(){
@@ -172,6 +201,8 @@ class LinkedList {
         console.log(this.printList());
     }
 
+
+
     palindromeWithDoublyLinkedList(){
         let head = this.head; //0(1)
         let tail = this.tail //0(1)
@@ -190,6 +221,14 @@ class LinkedList {
     //TC: 0(n)
     //SC: 0(1)
 }
+
+const myLinkedList2 = new LinkedList("1");
+myLinkedList2.append("2");
+myLinkedList2.append("3");
+myLinkedList2.append("4");
+myLinkedList2.append("5");
+myLinkedList2.append("6");
+console.log(myLinkedList2.printList(myLinkedList2.reverseDoublyLinkedList()))
 
 /*const myLinkedList2 = new LinkedList("1");
 myLinkedList2.append("2");
@@ -211,19 +250,19 @@ myLinkedList3.MoveFirstElementToEndOfLinkedList()*/
 
 
 
-const myLinkedList = new LinkedList("l");
+/*const myLinkedList = new LinkedList("l");
 myLinkedList.append("e");
 myLinkedList.append("v");
 myLinkedList.append("v");
-myLinkedList.append("e");
+myLinkedList.append("e");*/
 //myLinkedList.append("j");
-myLinkedList.append("l");
+//myLinkedList.append("l");
 //myLinkedList.prepend("e");
 //myLinkedList.insert(1,"l");
-console.log(myLinkedList.palindromeWithDoublyLinkedList());
+//console.log(myLinkedList.palindromeWithDoublyLinkedList());
 //myLinkedList.remove(2);
-//myLinkedList.reverse();
+//myLinkedList.reverseSinglyLinkedList();
 //console.log(myLinkedList.printList());
-//console.log(myLinkedList.reverse());
+//console.log(myLinkedList.reverseSinglyLinkedList());
 //console.log(myLinkedList.printList());
 //console.log(myLinkedList)
