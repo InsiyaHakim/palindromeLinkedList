@@ -1,3 +1,5 @@
+import GetNthNodeFromTheEndOfSinglyLinkedList from './GetNthNodeFromEndOfSLL'
+//const parse = require('node-html-parser');
 class Node {
     constructor(value){
         this.value = value;
@@ -37,7 +39,7 @@ class LinkedList {
         return this;
     }
 
-    printList(node = null){debugger;
+    printList(node = null){
         let currentNode = node || this.head;
         let result = [];
         while(currentNode !== null){
@@ -220,6 +222,61 @@ class LinkedList {
     }
     //TC: 0(n)
     //SC: 0(1)
+
+
+    GetNthNodeInASinglyLinkedList(index){
+        if(this.head === null) return null; //0(1)
+        let count = 0;//0(1)
+        let current = this.head; //0(1)
+
+        while (count < index){ //0(n)
+            current = current.next; //0(1)
+            count++; //0(1)
+        }
+        return current.value;
+    }
+    //TC: 0(n)
+    //SC: 0(1)
+
+    GetNthNodeInADoublyLinkedList(index){
+
+        if(this.head === null) return null; //0(1)
+
+        let count = 0;//0(1)
+        let current = this.tail; //0(1)
+
+        while (count < index){ //0(n)
+            current = current.previous; //0(1)
+            count++; //0(1)
+        }
+        return current.value;
+    }
+    //TC: 0(n)
+    //SC: 0(2)
+
+     GetNthNodeFromTheEndOfSinglyLinkedList = (index) => {
+        if(this.head === null) return null; //0(1)
+
+        let length = 1;//0(1)
+        let current = this.head; //0(1)
+
+        while (current.next !== null){ //0(n)
+            current = current.next; //0(1)
+            length++; //0(1)
+        }
+
+        if(length < index) return null; //0(1)
+
+        current = this.head; //0(1)
+
+        for (let i = 1; i < length - index + 1; i++){ //0(n)
+            current = current.next; //0(1)
+        }
+        return current.value;
+    };
+//TC: 0(n + n)
+//SC: 0(1)
+
 }
 
 const myLinkedList2 = new LinkedList("1");
@@ -228,7 +285,9 @@ myLinkedList2.append("3");
 myLinkedList2.append("4");
 myLinkedList2.append("5");
 myLinkedList2.append("6");
-console.log(myLinkedList2.printList(myLinkedList2.reverseDoublyLinkedList()))
+console.log(myLinkedList2.GetNthNodeInASinglyLinkedList())
+console.log(myLinkedList2.GetNthNodeInADoublyLinkedList(2))
+//console.log(myLinkedList2.printList(myLinkedList2.reverseDoublyLinkedList()))
 
 /*const myLinkedList2 = new LinkedList("1");
 myLinkedList2.append("2");
