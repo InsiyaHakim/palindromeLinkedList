@@ -87,7 +87,7 @@ class LinkedList {
 
 
 
-    reverseSinglyLinkedList(middleNode = null){
+    SinglyLinkedList(middleNode = null){
         let current = middleNode ? middleNode : this.head; //0(1)
         let prev = null; //0(1)
 
