@@ -45,45 +45,28 @@ class LinkedList {
     }
 
     hasCycle(){
-        if(this.head === null) return null; //0(1)
+        let index = 0;
+        if(this.head === null) return false; //0(1)
 
-        let current = this.head;//0(1)
-        let set = new Set();//0(1)
-
-        while(current !== null){//0(n)
-            if(set.has(current)) return true;//0(1)
-
-            set.add(current);//0(n) keeps growing until we find a cycle
-            current = current.next;//0(1)
-        }
-        return false;
-    }//TC: 0(n) and SC: 0(n)
-
-    hasCycle2(){
-        if(this.head === null) return null; //0(1)
-
-        let slow = this.head;//0(1)
-        let fast = this.head;//0(1)
+        let slow, fast = this.head;//0(1)
 
         while(fast !== null){//0(n)
             slow = slow.next;//0(1)
             fast = fast.next.next;//0(1)
 
-            if(slow === fast) return true;//0(1)
+            if(slow === fast) break;//0(1)
         }
-        return false;
-    }//TC: 0(n) and SC: 0(1)
+        if(fast === null) return false;//0(1)
 
-    hasCycle3() {
-        if(this.head === null) return false;
-
-        let current = this.head;
-        do{
-            if (this.indexOf(current) !== this.lastIndexOf(current)) return true;
-        } while((current = current.next) !== null);
-        return false;
+        slow = this.head;//0(1)
+        while(slow !== fast){//0(n)
+            index++;//0(1)
+            slow = slow.next;//0(1)
+            fast= fast.next;//0(1)
+        }
+        return index;
     }
-}
+}//TC: 0(n) and SC: 0(1)
 
 const myLinkedList1 = new LinkedList(3);
 myLinkedList1.append(2);
@@ -92,4 +75,4 @@ myLinkedList1.append(-4);
 
 //console.log(myLinkedList1.hasCycle3());
 myLinkedList1.attachTailToSecondNode();
-console.log(myLinkedList1.hasCycle3());
+console.log(myLinkedList1.hasCycle());
