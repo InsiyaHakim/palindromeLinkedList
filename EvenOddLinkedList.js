@@ -69,4 +69,4 @@ myLinkedList1.append(3);
 myLinkedList1.append(4);
 myLinkedList1.append(5);
 
-console.log(myLinkedList1.printList(myLinkedList1.evenOddLL(2,4)));
+console.log(myLinkedList1.printList(myLinkedList1.evenOddLL()));
