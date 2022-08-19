@@ -28,16 +28,6 @@ class LinkedList {
         return this;
     }
 
-    printList(node = null){
-        let currentNode = node || this.head;
-        let result = [];
-        while(currentNode !== null){
-            result.push(currentNode.value);
-            currentNode = currentNode.next
-        }
-        return result;
-    }
-
     reverseList(head){
         if(head === null || head.next === null) return head;
 
