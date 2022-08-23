@@ -95,9 +95,11 @@ class LinkedList {
 }//TC: 0(n) and SC: 0(1)
 
 const myLinkedList1 = new LinkedList(1);
+myLinkedList1.append(4);
+myLinkedList1.append(9);
+myLinkedList1.append(6);
 myLinkedList1.append(2);
 myLinkedList1.append(3);
-myLinkedList1.append(4);
 //myLinkedList1.append(5);
 console.log(myLinkedList1.printList(myLinkedList1.reorderList()));
 
