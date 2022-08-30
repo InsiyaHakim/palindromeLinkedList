@@ -93,8 +93,8 @@ class LinkedList {
 //
 // console.log(myLinkedList1.printList(myLinkedList1.removeNthNodeFromEndOfList(2)));
 
-// const myLinkedList1 = new LinkedList(1);
-// console.log(myLinkedList1.printList(myLinkedList1.removeNthNodeFromEndOfList(1)));
+const myLinkedList1 = new LinkedList(1);
+console.log(myLinkedList1.printList(myLinkedList1.removeNthNodeFromEndOfList(1)));
 
 // const myLinkedList1 = new LinkedList(1);
 // myLinkedList1.append(2);
@@ -107,9 +107,9 @@ class LinkedList {
 //
 // console.log(myLinkedList1.printList(myLinkedList1.removeNthNodeFromEndOfList(1)));
 
-const myLinkedList1 = new LinkedList(1);
-myLinkedList1.append(2);
-myLinkedList1.append(3);
-myLinkedList1.append(4);
-
-console.log(myLinkedList1.printList(myLinkedList1.removeNthNodeFromEndOfList(4)));
+// const myLinkedList1 = new LinkedList(1);
+// myLinkedList1.append(2);
+// myLinkedList1.append(3);
+// myLinkedList1.append(4);
+//
+// console.log(myLinkedList1.printList(myLinkedList1.removeNthNodeFromEndOfList(4)));
