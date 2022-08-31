@@ -42,7 +42,7 @@ class LinkedList {
 
 
     rotateList(val){
-        if(this.head === null) return null; //0(1)
+        if(!this.head || !this.head.next) return this.head; //0(1)
 
         let currentNode = this.head;
         let prev = null;
@@ -65,14 +65,23 @@ class LinkedList {
 }//TC: 0(n) and SC: 0(1)
 
 const myLinkedList1 = new LinkedList(1);
-myLinkedList1.append(2);
-myLinkedList1.append(3);
-myLinkedList1.append(4);
-myLinkedList1.append(5);
 
 console.log(myLinkedList1.printList(myLinkedList1.rotateList(2)));
+
+
+
+
+// const myLinkedList1 = new LinkedList(1);
+// myLinkedList1.append(2);
+// myLinkedList1.append(3);
+// myLinkedList1.append(4);
+// myLinkedList1.append(5);
+//
+// console.log(myLinkedList1.printList(myLinkedList1.rotateList(2)));
 
 // const myLinkedList1 = new LinkedList(0);
 // myLinkedList1.append(1);
 // myLinkedList1.append(2);
 // console.log(myLinkedList1.printList(myLinkedList1.rotateList(4)));
+
+
